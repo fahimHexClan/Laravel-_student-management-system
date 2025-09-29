@@ -2,18 +2,21 @@
 
 @section('content')
 
-<div class="card">
+<div class="card border-0 shadow-sm">
     <div class="card-header bg-warning text-dark">
-        <h4 class="mb-0"><i class="fas fa-user-edit"></i> Edit Student</h4>
+        <h4 class="mb-0">
+            <i class="fas fa-user-edit"></i> 
+            <span class="d-none d-sm-inline">Edit Student</span>
+            <span class="d-inline d-sm-none">Edit</span>
+        </h4>
     </div>
     
-    <div class="card-body">
+    <div class="card-body p-3 p-md-4">
         
-        <!-- Validation Errors -->
         @if($errors->any())
         <div class="alert alert-danger">
-            <strong>Whoops!</strong> There were some problems with your input:
-            <ul class="mb-0 mt-2">
+            <strong><i class="fas fa-exclamation-triangle"></i> Errors:</strong>
+            <ul class="mb-0 mt-2 small">
                 @foreach($errors->all() as $error)
                     <li>{{ $error }}</li>
                 @endforeach
@@ -21,42 +24,37 @@
         </div>
         @endif
         
-        <!-- Form -->
         <form action="{{ route('students.update', $student->id) }}" method="POST">
             @csrf
             @method('PUT')
             
-            <div class="row">
+            <div class="row g-3">
                 
-                <!-- Name -->
-                <div class="col-md-6 mb-3">
+                <div class="col-12 col-md-6">
                     <label for="name" class="form-label">Name <span class="text-danger">*</span></label>
-                    <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name', $student->name) }}" placeholder="Enter student name" required>
+                    <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name', $student->name) }}" placeholder="Full name" required>
                     @error('name')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
                 
-                <!-- Email -->
-                <div class="col-md-6 mb-3">
+                <div class="col-12 col-md-6">
                     <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
-                    <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email', $student->email) }}" placeholder="Enter email address" required>
+                    <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email', $student->email) }}" placeholder="email@example.com" required>
                     @error('email')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
                 
-                <!-- Phone -->
-                <div class="col-md-6 mb-3">
+                <div class="col-12 col-md-6">
                     <label for="phone" class="form-label">Phone <span class="text-danger">*</span></label>
-                    <input type="text" name="phone" id="phone" class="form-control @error('phone') is-invalid @enderror" value="{{ old('phone', $student->phone) }}" placeholder="Enter phone number" required>
+                    <input type="text" name="phone" id="phone" class="form-control @error('phone') is-invalid @enderror" value="{{ old('phone', $student->phone) }}" placeholder="Phone number" required>
                     @error('phone')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
                 
-                <!-- Date of Birth -->
-                <div class="col-md-6 mb-3">
+                <div class="col-12 col-md-6">
                     <label for="date_of_birth" class="form-label">Date of Birth <span class="text-danger">*</span></label>
                     <input type="date" name="date_of_birth" id="date_of_birth" class="form-control @error('date_of_birth') is-invalid @enderror" value="{{ old('date_of_birth', $student->date_of_birth) }}" required>
                     @error('date_of_birth')
@@ -64,10 +62,9 @@
                     @enderror
                 </div>
                 
-                <!-- Course -->
-                <div class="col-md-6 mb-3">
+                <div class="col-12">
                     <label for="course" class="form-label">Course <span class="text-danger">*</span></label>
-                    <select name="course" id="course" class="form-control @error('course') is-invalid @enderror" required>
+                    <select name="course" id="course" class="form-select @error('course') is-invalid @enderror" required>
                         <option value="">-- Select Course --</option>
                         <option value="Computer Science" {{ old('course', $student->course) == 'Computer Science' ? 'selected' : '' }}>Computer Science</option>
                         <option value="Information Technology" {{ old('course', $student->course) == 'Information Technology' ? 'selected' : '' }}>Information Technology</option>
@@ -80,10 +77,9 @@
                     @enderror
                 </div>
                 
-                <!-- Address -->
-                <div class="col-md-12 mb-3">
+                <div class="col-12">
                     <label for="address" class="form-label">Address <span class="text-danger">*</span></label>
-                    <textarea name="address" id="address" rows="3" class="form-control @error('address') is-invalid @enderror" placeholder="Enter full address" required>{{ old('address', $student->address) }}</textarea>
+                    <textarea name="address" id="address" rows="3" class="form-control @error('address') is-invalid @enderror" placeholder="Full address" required>{{ old('address', $student->address) }}</textarea>
                     @error('address')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -91,12 +87,11 @@
                 
             </div>
             
-            <!-- Buttons -->
-            <div class="d-flex justify-content-between">
-                <a href="{{ route('students.index') }}" class="btn btn-secondary">
+            <div class="d-flex flex-column flex-sm-row gap-2 mt-4">
+                <a href="{{ route('students.index') }}" class="btn btn-secondary flex-fill flex-sm-grow-0">
                     <i class="fas fa-arrow-left"></i> Back
                 </a>
-                <button type="submit" class="btn btn-warning">
+                <button type="submit" class="btn btn-warning flex-fill flex-sm-grow-0 ms-sm-auto">
                     <i class="fas fa-save"></i> Update Student
                 </button>
             </div>
