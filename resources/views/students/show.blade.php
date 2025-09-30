@@ -25,10 +25,8 @@
     
     <div class="card-body p-3 p-md-4">
         
-        <!-- Desktop View - 2 Columns -->
         <div class="row g-4 d-none d-md-flex">
             
-            <!-- Left Column -->
             <div class="col-md-6">
                 
                 <div class="mb-4">
@@ -54,7 +52,6 @@
                 
             </div>
             
-            <!-- Right Column -->
             <div class="col-md-6">
                 
                 <div class="mb-4">
@@ -87,7 +84,6 @@
             
         </div>
         
-        <!-- Mobile View - Stacked -->
         <div class="d-md-none">
             
             <div class="mb-3 pb-3 border-bottom">
@@ -139,7 +135,6 @@
         
         <hr class="my-4">
         
-        <!-- Timestamps - Responsive -->
         <div class="row g-2">
             <div class="col-12 col-sm-6">
                 <small class="text-muted d-block">
