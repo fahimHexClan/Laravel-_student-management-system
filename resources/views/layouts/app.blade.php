@@ -11,6 +11,9 @@
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+     <!-- Livewire Styles -->
+    @livewireStyles
+
     <!-- Custom Responsive CSS -->
     <style>
         /* Mobile First Approach */
@@ -223,7 +226,11 @@
         @endif
 
         <!-- Page Content -->
-        @yield('content')
+@hasSection('content')
+    @yield('content')
+@else
+    {{ $slot }}
+@endif
         
     </div>
 
@@ -238,6 +245,9 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Livewire Scripts -->
+    @livewireScripts
     
     <!-- Search Auto Submit (Optional) -->
     <script>

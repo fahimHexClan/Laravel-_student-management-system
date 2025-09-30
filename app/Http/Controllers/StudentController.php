@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
-  public function index(Request $request)
+ /*  public function index(Request $request)
 {
     $search = $request->input('search');
     
@@ -19,7 +19,7 @@ class StudentController extends Controller
     })->get();
     
     return view('students.index', compact('students', 'search'));
-}
+} */
 
     public function create()
     {
