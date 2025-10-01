@@ -414,7 +414,6 @@
                 const viewModal = bootstrap.Modal.getInstance(document.getElementById('viewModal'));
                 if (viewModal) viewModal.hide();
                 
-                // Show edit modal
                 new bootstrap.Modal(document.getElementById('editModal')).show();
             });
             
